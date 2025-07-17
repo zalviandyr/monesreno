@@ -1,0 +1,9 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "server",
+  "entryFile": "server",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "tsconfig.server.json"
+  }
+}

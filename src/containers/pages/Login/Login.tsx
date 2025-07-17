@@ -97,6 +97,10 @@ export class Login extends Component<RouteComponentProps, MyState> {
                   <Button type="submit" variant="primary w-50 mx-auto" block>
                     Login
                   </Button>
+
+                  <Button href="register" variant="link" block>
+                    Register
+                  </Button>
                 </Form>
               </Card.Body>
             </Card>

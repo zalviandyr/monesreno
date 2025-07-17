@@ -1,13 +1,14 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { User } from './types/user.interface';
-import { Constant, generateToken, encPassword, getNow } from '../../helpers';
+import { generateToken, encPassword, getNow } from '../../helpers';
 import { UserLoginDto, UserRegisterDto } from './dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { User } from './schemas/user.schema';
 
 @Injectable()
 export class UserService {
   constructor(
-    @Inject(Constant.USER_MODEL)
+    @InjectModel(User.name)
     private userModel: Model<User>
   ) {}
 

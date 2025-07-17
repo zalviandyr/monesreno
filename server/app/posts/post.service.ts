@@ -1,16 +1,16 @@
-import { Injectable, Inject } from '@nestjs/common';
-import { Constant } from '../../helpers/constants';
+import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { forEach } from 'p-iteration';
-import { Post } from './types/post.interface';
 import { PostCreateDto } from './dto/post.create.dto';
 import { UserService } from '../users/user.service';
 import { getNow } from '../../helpers';
+import { InjectModel } from '@nestjs/mongoose';
+import { Post } from './schemas/post.schema';
 
 @Injectable()
 export class PostService {
   constructor(
-    @Inject(Constant.POST_MODEL)
+    @InjectModel(Post.name)
     private postModel: Model<Post>,
     private userService: UserService
   ) {}

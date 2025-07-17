@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import { RouterModule, Routes } from 'nest-router';
 import { AppModule } from './apps/app.module';
 import { UserModule } from './app/users/user.module';
 import { BlogModule } from './app/blogs/blog.module';
 import { PostModule } from './app/posts/post.module';
+import { RouterModule, Routes } from '@nestjs/core';
+import { ConfigModule } from '@nestjs/config';
 
 const routes: Routes = [
   {
@@ -30,10 +31,13 @@ const routes: Routes = [
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../build'),
     }),
-    RouterModule.forRoutes(routes),
+    RouterModule.register(routes),
     AppModule,
     UserModule,
     BlogModule,

@@ -50,6 +50,8 @@ export class UserController {
   async create(@Body() user: UserRegisterDto, @Res() response: Response) {
     const result = await this.userService.create(user);
     if (result instanceof Error) {
+      console.log(result);
+
       throw new HttpException('Username has already taken', HttpStatus.BAD_REQUEST);
     }
 
