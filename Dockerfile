@@ -14,7 +14,6 @@ COPY --from=build /app/dist/ dist
 
 COPY package.json package.json
 COPY package-lock.json package-lock.json
-COPY .env.docker .env
 
 RUN npm install --omit=dev
 
